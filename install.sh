@@ -24,7 +24,18 @@ systemctl restart tor
 
 wget "https://github.com/mincoin/mincoin/releases/download/v0.8.8.0/mincoin-0.8.8.0-linux.tar.gz"
 tar xf mincoin-0.8.8.0-linux.tar.gz
-mincoin-0.8.8.0-linux/bin/64/mincoind && systemctl stop mincoind
+mincoin-0.8.8.0-linux/bin/64/mincoind
+
+
+PASSWORD=$(head -c 16  /dev/random | md5sum | cut -f 1 -d\ )
+USER=$(head -c 16  /dev/random | md5sum | cut -f 1 -d\ )
+
+"rpcuser=1234" > /root/.mincoin/mincoin.conf
+"rpcpassword=5678" > /root/.mincoin/mincoin.conf
+sed -i "s/#1234/$USER/g" /root/.mincoin/mincoin.conf
+sed -i "s/#4567/$PASSWORD/g" /root/.mincoin/mincoin.conf
+
+systemctl stop mincoind
 wget "https://github.com/mincoin/mincoin/releases/download/v0.8.8.0/Mincoin-1553460-bootstrap.dat"
 mv Mincoin-1553460-bootstrap.dat /root/.mincoin/bootstrap.dat
 
