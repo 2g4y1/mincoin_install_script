@@ -22,7 +22,7 @@ echo "HiddenServicePort 9334 127.0.0.1:9334" | sudo tee -a /etc/tor/torrc
 #+++++++++++++++++++#
 
 wget "https://github.com/mincoin/mincoin/releases/download/v0.8.8.0/mincoin-0.8.8.0-linux.tar.gz"
-tar xf mincoin-0.8.8.0-linux.tar.gz -C /mincoin
+tar xf mincoin-0.8.8.0-linux.tar.gz -C "$PWD/mincoin"
 wget "https://github.com/mincoin/mincoin/releases/download/v0.8.8.0/Mincoin-1553460-bootstrap.dat"
 mv Mincoin-1553460-bootstrap.dat /root/.mincoin/bootstrap.dat
 
