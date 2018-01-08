@@ -29,7 +29,7 @@ systemctl start tor
 wget "https://github.com/mincoin/mincoin/releases/download/v0.8.8.0/mincoin-0.8.8.0-linux.tar.gz"
 tar xf mincoin-0.8.8.0-linux.tar.gz
 
-touch /root/.mincoin/mincoin.conf
+sudo sudo touch /root/.mincoin/mincoin.conf
 PASSWORD=$(head -c 32  /dev/random | md5sum | cut -f 1 -d\ )
 USER=$(head -c 16  /dev/random | md5sum | cut -f 1 -d\ )
 
