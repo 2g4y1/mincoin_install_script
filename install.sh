@@ -16,13 +16,15 @@ apt install tor deb.torproject.org-keyring -y
 sed -i 's/#RunAsDaemon/RunAsDaemon/g' /etc/tor/torrc
 echo "HiddenServiceDir /var/lib/tor/hidden_service/" | sudo tee -a /etc/tor/torrc
 echo "HiddenServicePort 9334 127.0.0.1:9334" | sudo tee -a /etc/tor/torrc
+systemctl restart tor
 
 #+++++++++++++++++++#
 #Installation of MNC#
 #+++++++++++++++++++#
 
 wget "https://github.com/mincoin/mincoin/releases/download/v0.8.8.0/mincoin-0.8.8.0-linux.tar.gz"
-tar xf mincoin-0.8.8.0-linux.tar.gz -C "$PWD/mincoin"
+tar xf mincoin-0.8.8.0-linux.tar.gz
+mincoin-0.8.8.0-linux/bin/64/mincoind && systemctl stop mincoind
 wget "https://github.com/mincoin/mincoin/releases/download/v0.8.8.0/Mincoin-1553460-bootstrap.dat"
 mv Mincoin-1553460-bootstrap.dat /root/.mincoin/bootstrap.dat
 
@@ -37,4 +39,4 @@ $external > /root/.mincoin/mincoin.conf
 "txindex=1" > /root/.mincoin/mincoin.conf
 
 #Autostart Mincoin
-echo "$PWD/mincoin-0.8.8.0-linux/bin/64/mincoind -daemon" | sudo tee -a /etc/rc.local
+echo "/root/mincoin-0.8.8.0-linux/bin/64/mincoind -daemon" | sudo tee -a /etc/rc.local
