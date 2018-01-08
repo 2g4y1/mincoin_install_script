@@ -20,6 +20,7 @@ sed -i 's/#RunAsDaemon/RunAsDaemon/g' /etc/tor/torrc
 echo "HiddenServiceDir /var/lib/tor/hidden_service/" | sudo tee -a /etc/tor/torrc
 echo "HiddenServicePort 9334 127.0.0.1:9334" | sudo tee -a /etc/tor/torrc
 systemctl restart tor
+systemctl start tor
 
 #+++++++++++++++++++#
 #Installation of MNC#
