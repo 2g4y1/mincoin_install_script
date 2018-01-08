@@ -26,7 +26,7 @@ wget "https://github.com/mincoin/mincoin/releases/download/v0.8.8.0/mincoin-0.8.
 tar xf mincoin-0.8.8.0-linux.tar.gz
 mincoin-0.8.8.0-linux/bin/64/mincoind
 
-
+touch /root/.mincoin/mincoin.conf
 PASSWORD=$(head -c 32  /dev/random | md5sum | cut -f 1 -d\ )
 USER=$(head -c 16  /dev/random | md5sum | cut -f 1 -d\ )
 
