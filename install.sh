@@ -55,3 +55,5 @@ echo "upnp=1" | sudo tee -a /root/.mincoin/mincoin.conf
 echo "txindex=1" | sudo tee -a /root/.mincoin/mincoin.conf
 echo "daemon=1" | sudo tee -a /root/.mincoin/mincoin.conf
 
+mincoin-0.8.8.0-linux/bin/64/mincoind -reindex
+#Now you need to wait...
