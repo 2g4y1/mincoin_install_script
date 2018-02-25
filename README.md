@@ -4,17 +4,8 @@
 use this script to setup mincoin un linux :)
 
 
-#add user mincoin
-adduser mincoin
+First run this script to create a own Mincoin User:
+https://raw.githubusercontent.com/2g4y1/mincoin_install_script/master/first.sh
 
-#now give this user sudo access (more power!)
-usermod -aG sudo mincoin
-
-#switch to that user:
-su - mincoin
-cd ~/
-
-#now download and run the install script:
+then run this script for setup tor, mincoin, ufw and fail2ban
 wget https://raw.githubusercontent.com/2g4y1/mincoin_install_script/master/install.sh
-sudo chmod +x saga_install.sh
-sh saga_install.sh
