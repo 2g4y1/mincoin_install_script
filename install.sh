@@ -61,7 +61,7 @@ echo "Downloading MinCoin wallet..."
 wget $FILE_NAME
 tar -zxvf mincoin-0.8.8.0-linux.tar.gz
 mv mincoin-0.8.8.0-linux mincoin
-chmod +x mincoin/mincoind
+chmod +x /mincoin/bin/64/mincoind
 sudo cp /mincoin/bin/64/mincoind /usr/local/bin
 
 echo "INITIAL START: IGNORE ANY CONFIG ERROR MSGs..." 
