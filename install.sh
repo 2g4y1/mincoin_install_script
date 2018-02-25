@@ -145,11 +145,7 @@ echo "basic security completed..."
 
 echo "restarting wallet, be patient, wait..."
 mincoind -reindex
-sleep 30
 
-echo "mincoind getmininginfo:"
-mincoind getmininginfo
 
-echo "Note: installed. If either are incorrect, you will need to edit the .mincoind/mincoind.conf file"
-echo "Done!  It may take time to sync, you can start your final setup checks in the guide once the block count is sync'd"
-sudo cat ~/.mincoin/mincoin.conf
+echo "Mincoin succesfully installed. Waiting for reindexing. Your mincoin.conf:"
+cat .mincoin/mincoin.conf
