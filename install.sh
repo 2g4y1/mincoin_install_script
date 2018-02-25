@@ -144,7 +144,7 @@ sudo systemctl start fail2ban
 echo "basic security completed..."
 
 echo "restarting wallet, be patient, wait..."
-mincoind
+mincoind -reindex
 sleep 30
 
 echo "mincoind getmininginfo:"
