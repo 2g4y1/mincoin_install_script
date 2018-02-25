@@ -6,7 +6,7 @@ use this script to setup mincoin un linux :)
 
 #add user mincoin
 
-sudo adduser mincoin
+sudo adduser mincoin #set password and press enter for some times
 
 
 #now give this user sudo access (more power!)
