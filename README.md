@@ -1,8 +1,8 @@
 # mincoin_install_script
 
 
-use this script to setup mincoin un linux :)
-
+#use this script to setup mincoin un linux :)
+#Copy paste one command at once
 
 #add user mincoin
 
@@ -28,4 +28,4 @@ sudo chmod +x install.sh
 sh install.sh
 
 
-Wait until the script finishes
+#Wait until the script finishes
