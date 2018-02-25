@@ -60,9 +60,9 @@ sudo apt-get install build-essential libssl-dev libdb++-dev libboost-all-dev lib
 echo "Downloading MinCoin wallet..."
 wget $FILE_NAME
 tar -zxvf mincoin-0.8.8.0-linux.tar.gz
-mv mincoin-0.8.8.0-linux.tar.gz MinCoin
-chmod +x MinCoin/mincoind
-sudo cp MinCoin/mincoind /usr/local/bin
+mv mincoin-0.8.8.0-linux.tar.gz mincoin
+chmod +x mincoin/mincoind
+sudo cp mincoin/mincoind /usr/local/bin
 
 echo "INITIAL START: IGNORE ANY CONFIG ERROR MSGs..." 
 mincoind
@@ -74,7 +74,7 @@ mincoind stop
 
 echo "creating config..." 
 
-cat <<EOF > ~/.MinCoin/MinCoin.conf
+cat <<EOF > ~/.mincoin/mincoin.conf
 rpcuser=$USER
 rpcpassword=$PASSWORD
 externalip=$address
