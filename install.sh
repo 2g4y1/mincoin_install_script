@@ -68,7 +68,7 @@ echo "INITIAL START: IGNORE ANY CONFIG ERROR MSGs..."
 mincoind
 
 echo "Loading wallet, be patient, wait..." 
-sleep 60
+sleep 30
 mincoind getmininginfo
 mincoind stop
 
@@ -145,7 +145,7 @@ echo "basic security completed..."
 
 echo "restarting wallet, be patient, wait..."
 mincoind
-sleep 60
+sleep 30
 
 echo "mincoind getmininginfo:"
 mincoind getmininginfo
