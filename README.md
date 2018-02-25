@@ -29,3 +29,9 @@ sh install.sh
 
 
 #Wait until the script finishes
+
+sudo cat /var/lib/tor/hidden_service/hostname
+
+#write the output to .mincoin/mincoin.conf as externalip=sdnfgasjdgnfagjadfng.onion
+
+mincoind -reindex
