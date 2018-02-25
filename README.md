@@ -2,7 +2,8 @@
 
 
 use this script to setup mincoin un linux :)
-or use the oneliner for install:
+or use the oneliner for install
+
 wget -O - bit.ly/install-mincoin | bash
 
 
