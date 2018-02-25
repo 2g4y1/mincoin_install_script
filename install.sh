@@ -62,7 +62,7 @@ wget $FILE_NAME
 tar -zxvf mincoin-0.8.8.0-linux.tar.gz
 mv mincoin-0.8.8.0-linux mincoin
 chmod +x mincoin/mincoind
-sudo cp mincoin/mincoind /usr/local/bin
+sudo cp /mincoin-0.8.8.0-linux/bin/64/mincoind /usr/local/bin
 
 echo "INITIAL START: IGNORE ANY CONFIG ERROR MSGs..." 
 mincoind
