@@ -152,3 +152,4 @@ mincoind getmininginfo
 
 echo "Note: installed. If either are incorrect, you will need to edit the .mincoind/mincoind.conf file"
 echo "Done!  It may take time to sync, you can start your final setup checks in the guide once the block count is sync'd"
+sudo cat ~/.mincoin/mincoin.conf
