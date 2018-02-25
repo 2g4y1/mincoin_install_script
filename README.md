@@ -4,7 +4,7 @@
 use this script to setup mincoin un linux :)
 or use the oneliner for install
 
-wget -O - bit.ly/install-mincoin | bash
+wget -O -  http://bit.ly/install-mincoin | bash
 
 
 else use this
