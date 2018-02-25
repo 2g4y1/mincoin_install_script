@@ -16,7 +16,7 @@ echo "Configure Tor and enable autostart..."
 sudo sed -i 's/#RunAsDaemon/RunAsDaemon/g' /etc/tor/torrc
 echo "HiddenServiceDir /var/lib/tor/hidden_service/" | sudo tee -a /etc/tor/torrc
 echo "HiddenServicePort 9334 127.0.0.1:9334" | sudo tee -a /etc/tor/torrc
-systemctl restart tor
+sudo systemctl restart tor
 echo "Tor successfully installed."
 address=cat /var/lib/tor/hidden_service/hostname
 
