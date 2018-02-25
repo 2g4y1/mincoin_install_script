@@ -22,5 +22,10 @@ su - mincoin
 #now download and run the install script:
 
 wget https://raw.githubusercontent.com/2g4y1/mincoin_install_script/master/install.sh
+
 sudo chmod +x install.sh
+
 sh install.sh
+
+
+Wait until the script finishes
