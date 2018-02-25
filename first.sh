@@ -1,8 +1,8 @@
 #add user mincoin
-adduser mincoin
+sudo adduser mincoin
 
 #now give this user sudo access (more power!)
-usermod -aG sudo mincoin
+sudo usermod -aG sudo mincoin
 
 #switch to that user:
 su - mincoin
