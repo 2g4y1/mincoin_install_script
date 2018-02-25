@@ -60,7 +60,7 @@ sudo apt-get install build-essential libssl-dev libdb++-dev libboost-all-dev lib
 echo "Downloading MinCoin wallet..."
 wget $FILE_NAME
 tar -zxvf mincoin-0.8.8.0-linux.tar.gz
-mv mincoin-0.8.8.0-linux.tar.gz mincoin
+mv mincoin-0.8.8.0-linux mincoin
 chmod +x mincoin/mincoind
 sudo cp mincoin/mincoind /usr/local/bin
 
