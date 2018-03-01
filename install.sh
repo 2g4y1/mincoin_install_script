@@ -1,6 +1,7 @@
 #!/bin/bash
 
 FILE_NAME="https://github.com/mincoin/mincoin/releases/download/v0.8.8.0/mincoin-0.8.8.0-linux.tar.gz"
+bootstrap="https://github.com/mincoin/mincoin/releases/download/v0.8.8.0/Mincoin-1615424-bootstrap.dat"
 
 echo "=================================================================="
 echo "Tor Install"
@@ -105,22 +106,6 @@ addnode=80.208.231.152:48340
 addnode=213.32.6.132:32968
 addnode=66.70.180.59:46374
 addnode=174.4.199.52:36474
-addnode=46.4.114.176:55008
-addnode=23.253.205.134:50250
-addnode=90.149.128.91:58619
-addnode=216.137.133.4:40058
-addnode=188.187.63.11:52600
-addnode=62.210.5.232:9334
-addnode=82.9.156.111:37930
-addnode=104.231.151.226:9334
-addnode=213.162.73.156:42677
-addnode=45.76.32.233:50089
-addnode=179.180.33.165:54607
-addnode=76.16.12.81:54292
-addnode=188.244.132.134:45111
-addnode=188.254.215.199:43052
-addnode=77.164.203.13:61221
-addnode=52.250.127.134:37058
 EOF
 
 echo "setting basic security..."
@@ -145,7 +130,9 @@ sudo systemctl enable fail2ban
 sudo systemctl start fail2ban
 echo "basic security completed..."
 
-echo "restarting wallet, be patient, wait..."
+echo "Downloading bootstrap.dat and reindexing..."
+echo "Please be patient"
+wget $bootstrap -O ~/.mincoin/bootstrap.dat
 mincoind -reindex
 
 
