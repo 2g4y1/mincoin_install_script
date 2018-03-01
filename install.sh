@@ -24,26 +24,17 @@ sudo apt install tor deb.torproject.org-keyring -y
 
 echo "Configure Tor and enable autostart..."
 sudo sed -i 's/#RunAsDaemon/RunAsDaemon/g' /etc/tor/torrc
-#echo "HiddenServiceDir /var/lib/tor/hidden_service/" | sudo tee -a /etc/tor/torrc
-#echo "HiddenServicePort 9334 127.0.0.1:9334" | sudo tee -a /etc/tor/torrc
+echo "HiddenServiceDir /var/lib/tor/hidden_service/" | sudo tee -a /etc/tor/torrc
+echo "HiddenServicePort 9334 127.0.0.1:9334" | sudo tee -a /etc/tor/torrc
 
-if grep -qF "HiddenServiceDir /var/lib/tor/hidden_service/" /etc/tor/torrc;then
-   echo "Tor entries already set"
-else
-   echo "HiddenServiceDir /var/lib/tor/hidden_service/" | sudo tee -a /etc/tor/torrc
-fi
-if grep -qF "HiddenServicePort 9334 127.0.0.1:9334" /etc/tor/torrc;then
-   echo "Tor entries already set"
-else
-   echo "HiddenServicePort 9334 127.0.0.1:9334" | sudo tee -a /etc/tor/torrc
-fi
 
 
 sudo systemctl restart tor
 echo "Tor successfully installed."
 sleep 5
 sudo chown -R mincoin /var/lib/tor
-address=$(cat /var/lib/tor/hidden_service/hostname)
+sleep 1
+address=$(sudo cat /var/lib/tor/hidden_service/hostname)
 
 
 echo "=================================================================="
