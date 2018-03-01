@@ -6,8 +6,17 @@ bootstrap="https://github.com/mincoin/mincoin/releases/download/v0.8.8.0/Mincoin
 echo "=================================================================="
 echo "Tor Install"
 echo "=================================================================="
-echo "deb http://deb.torproject.org/torproject.org xenial main" | sudo tee -a /etc/apt/sources.list
-echo "deb-src http://deb.torproject.org/torproject.org xenial main" | sudo tee -a /etc/apt/sources.list
+#echo "deb http://deb.torproject.org/torproject.org xenial main" | sudo tee -a /etc/apt/sources.list
+#echo "deb-src http://deb.torproject.org/torproject.org xenial main" | sudo tee -a /etc/apt/sources.list
+
+
+if grep -qF "deb http://deb.torproject.org/torproject.org xenial main" /etc/apt/sources.list;then
+   echo "Repository already exists"
+else
+   echo "deb http://deb.torproject.org/torproject.org xenial main" | sudo tee -a /etc/apt/sources.list
+fi
+
+
 gpg --keyserver keys.gnupg.net --recv A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89
 gpg --export A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89 | sudo apt-key add -
 sudo apt update
@@ -15,8 +24,21 @@ sudo apt install tor deb.torproject.org-keyring -y
 
 echo "Configure Tor and enable autostart..."
 sudo sed -i 's/#RunAsDaemon/RunAsDaemon/g' /etc/tor/torrc
-echo "HiddenServiceDir /var/lib/tor/hidden_service/" | sudo tee -a /etc/tor/torrc
-echo "HiddenServicePort 9334 127.0.0.1:9334" | sudo tee -a /etc/tor/torrc
+#echo "HiddenServiceDir /var/lib/tor/hidden_service/" | sudo tee -a /etc/tor/torrc
+#echo "HiddenServicePort 9334 127.0.0.1:9334" | sudo tee -a /etc/tor/torrc
+
+if grep -qF "HiddenServiceDir /var/lib/tor/hidden_service/" /etc/tor/torrc;then
+   echo "Tor entries already set"
+else
+   echo "HiddenServiceDir /var/lib/tor/hidden_service/" | sudo tee -a /etc/tor/torrc
+fi
+if grep -qF "HiddenServicePort 9334 127.0.0.1:9334" /etc/tor/torrc;then
+   echo "Tor entries already set"
+else
+   echo "HiddenServicePort 9334 127.0.0.1:9334" | sudo tee -a /etc/tor/torrc
+fi
+
+
 sudo systemctl restart tor
 echo "Tor successfully installed."
 sleep 5
