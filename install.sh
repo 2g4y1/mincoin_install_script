@@ -20,7 +20,7 @@ sudo systemctl restart tor
 echo "Tor successfully installed."
 sleep 1
 sudo chown -R mincoin /var/lib/tor
-address= sudo cat /var/lib/tor/hidden_service/hostname
+address=$(cat /var/lib/tor/hidden_service/hostname)
 
 
 echo "=================================================================="
