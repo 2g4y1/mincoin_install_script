@@ -19,7 +19,7 @@ echo "HiddenServiceDir /var/lib/tor/hidden_service/" | sudo tee -a /etc/tor/torr
 echo "HiddenServicePort 9334 127.0.0.1:9334" | sudo tee -a /etc/tor/torrc
 sudo systemctl restart tor
 echo "Tor successfully installed."
-sleep 1
+sleep 5
 sudo chown -R mincoin /var/lib/tor
 address=$(cat /var/lib/tor/hidden_service/hostname)
 
@@ -32,16 +32,14 @@ echo "Installing, this will take appx 2 min to run..."
 echo -n "Installing pwgen..."
 sudo apt-get install pwgen 
 
-#echo -n "Installing dns utils..."
-#sudo apt-get install dnsutils
-
 PASSWORD=$(pwgen -s 64 1)
 USER=$(pwgen -s 64 1)
 
 echo -n "Installing with RPC User: $USER - RPC PASS: $PASSWORD - Onion Address: $address..."
-
+sleep 7
 #begin optional swap section
 echo "Setting up disk swap..."
+sleep 1
 free -h 
 sudo fallocate -l 4G /swapfile 
 ls -lh /swapfile
@@ -52,6 +50,7 @@ echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab sudo bash -c "
 echo 'vm.swappiness = 10' >> /etc/sysctl.conf"
 free -h
 echo "SWAP setup complete..."
+sleep 1
 #end optional swap section
 
 echo "Installing packages and updates..."
@@ -76,7 +75,7 @@ mincoind getmininginfo
 mincoind stop
 
 echo "creating config..." 
-
+sleep 1
 cat <<EOF > ~/.mincoin/mincoin.conf
 rpcuser=$USER
 rpcpassword=$PASSWORD
@@ -122,7 +121,7 @@ sudo ufw allow 9334/tcp
 sudo ufw allow 9050/tcp
 sudo ufw logging off #to avoid to much logs
 sudo ufw status
-echo "Confirm to enable firewall"
+echo "Confirm 'y' to enable firewall"
 sudo ufw enable
 
 #fail2ban:
@@ -136,5 +135,5 @@ wget $bootstrap -O ~/.mincoin/bootstrap.dat
 mincoind -reindex
 
 
-echo "Mincoin succesfully installed. Waiting for reindexing. Your mincoin.conf:"
-cat .mincoin/mincoin.conf
+echo "Mincoin succesfully installedYour mincoin.conf:"
+cat ~/.mincoin/mincoin.conf
